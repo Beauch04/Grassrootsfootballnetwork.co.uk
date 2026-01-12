@@ -1,34 +1,35 @@
--- Players table
-create table if not exists public.players (
-  id uuid primary key default gen_random_uuid(),
-  full_name text not null,
-  age int,
-  position text,
-  height text,
-  preferred_foot text,
-  current_status text,
-  location text, -- UK city/region
-  highlights_url text,
-  experience text,
-  cv_file_url text,
-  is_free_player boolean not null default false,
-  season_paid boolean not null default false,
-  created_at timestamptz not null default now()
-);
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Grassroots Football Network — Coming Soon</title>
+  <meta name="description" content="Connecting grassroots football players with clubs." />
 
--- Clubs table
-create table if not exists public.clubs (
-  id uuid primary key default gen_random_uuid(),
-  club_name text not null,
-  league_level text,
-  position_needed text,
-  age_range text,
-  location text,
-  description text,
-  contact_email text,
-  created_at timestamptz not null default now()
-);
-
--- Optional: a simple counter view for player count
-create or replace view public.player_count as
-select count(*)::int as count from public.players;
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --panel:#101827;
+      --text:#e6eaf2;
+      --muted:#a6b0c3;
+      --brand:#7c3aed;
+      --brand2:#22c55e;
+      --border:rgba(255,255,255,.10);
+      --shadow:0 12px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(124,58,237,.25), transparent 60%),
+                  radial-gradient(900px 500px at 80% 40%, rgba(34,197,94,.18), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 80px}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:14px 16px;border:1px solid var(--border);border-radius:999px;
+      back
