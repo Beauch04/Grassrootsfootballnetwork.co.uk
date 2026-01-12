@@ -1,0 +1,10 @@
+export default function Page() {
+  return (
+    <main style={{ minHeight: "100vh", display: "grid", placeItems: "center", padding: 24 }}>
+      <div style={{ textAlign: "center", maxWidth: 600 }}>
+        <h1 style={{ fontSize: 32, margin: 0 }}>Grassroots Football Network</h1>
+        <p style={{ marginTop: 12, color: "#555" }}>Coming soon.</p>
+      </div>
+    </main>
+  );
+}
