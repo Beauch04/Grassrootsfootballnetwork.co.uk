@@ -1,0 +1,4 @@
+{
+  "buildCommand": "mkdir -p .vercel/output/static && cp index.html .vercel/output/static/",
+  "framework": null
+}
