@@ -1,16 +1,34 @@
-APP_URL=https://yourdomain.co.uk
-ADMIN_KEY=your-secret-admin-key
-CRON_SECRET=your-cron-secret
-UNSUBSCRIBE_SECRET=your-unsubscribe-secret
-NEXT_PUBLIC_SUPABASE_URL=...
-NEXT_PUBLIC_SUPABASE_ANON_KEY=...
-SUPABASE_SERVICE_ROLE_KEY=...
-SUPABASE_CV_BUCKET=cvs
-STRIPE_SECRET_KEY=sk_...
-STRIPE_WEBHOOK_SECRET=whsec_...
-STRIPE_PLAYER_SEASON_PRICE_ID=price_...
-STRIPE_CLUB_INTRO_PRICE_ID=price_...
-RESEND_API_KEY=re_...
-EMAIL_FROM=Grassroots Football Network <noreply@yourdomain.co.uk>
-SUPPORT_EMAIL=support@yourdomain.co.uk
-ADMIN_NOTIFY_EMAIL=you@yourdomain.co.uk
+-- Players table
+create table if not exists public.players (
+  id uuid primary key default gen_random_uuid(),
+  full_name text not null,
+  age int,
+  position text,
+  height text,
+  preferred_foot text,
+  current_status text,
+  location text, -- UK city/region
+  highlights_url text,
+  experience text,
+  cv_file_url text,
+  is_free_player boolean not null default false,
+  season_paid boolean not null default false,
+  created_at timestamptz not null default now()
+);
+
+-- Clubs table
+create table if not exists public.clubs (
+  id uuid primary key default gen_random_uuid(),
+  club_name text not null,
+  league_level text,
+  position_needed text,
+  age_range text,
+  location text,
+  description text,
+  contact_email text,
+  created_at timestamptz not null default now()
+);
+
+-- Optional: a simple counter view for player count
+create or replace view public.player_count as
+select count(*)::int as count from public.players;
